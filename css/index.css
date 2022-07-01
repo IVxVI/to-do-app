@@ -22,8 +22,8 @@ body {
 
     display: grid;
     grid: "header header header header" auto
-          "...... lists  active ......" auto /
-          1fr minmax(100px, 300px) minmax(250px, 500px)   
+          "...... lists  active ......" auto/
+          1fr minmax(100px, 300px) minmax(250px, 500px) 1fr; 
 }
 
 
@@ -34,7 +34,7 @@ body {
     font-weight: 900;
     color: rgba(0, 0, 0, 0.1);
     letter-spacing: 2px;
-    margin: -0.2em 0 0.5em;
+    margin: -0.3em 0 0.5em;
 }
 
 .all-tasks{
@@ -42,7 +42,7 @@ body {
 }
 
 .task-list{
-    font-size: 2rem;
+    font-size: 1.2rem;
     line-height: 1.7;
     list-style: circle;
     padding-left: 1.1em;
@@ -63,13 +63,49 @@ body {
     border-bottom: 1px solid currentColor;
     font-size: inherit;
     outline: none;
-
+    padding: 0.25em;
     transition: border-bottom 150ms ease-in;
     order: 2;
 }
 
+new::placeholder{
+    opacity: 0.4;
+}
+
+new::-webkit-input-placeholder{
+    opacity: 0.4;
+}
+
+new:-ms-input-placeholder{
+    opacity: 0.4;
+}
+
 .new:focus{     /* when somebody clicks inside of it*/
     border-bottom-width: 3px;
+}
+
+.new-task{
+    margin-bottom: 0;
+}
+
+.new:focus::-webkit-input-placeholder{
+    border-bottom-width: 3px;
+}
+
+.new:focus::-ms-input-placeholder{
+    border-bottom-width: 3px;
+}
+
+.new:focus::placeholder {
+    opacity: 0.2;
+}
+
+.new-task.creator .create{
+    color: var(--clr-primary);
+}
+
+.new.list {
+    font-size: 1.1em;
 }
 
 form {
@@ -82,26 +118,17 @@ form {
     border: 0;
     padding: 0;
     color: inherit;
-    transition: opacity 250ms ease-in;
 }
 
 .btn.create {
     font-size: 1.5rem;
     font-weight: 900;
     margin-right: 0.25rem;
-    color: var(--clr-primary);
+    transition: opacity 250ms ease-in;
 }
 
 .btn.create:hover {
     opacity: 0.7;
-}
-
-.new:focus::placeholder {
-    opacity: 0.2;
-}
-
-.new.list {
-    font-size: 1.1em;
 }
 
 .active-list{
@@ -136,11 +163,6 @@ form {
 .todo-body{
     padding: var(--spacer);
     position: relative;
-}
-
-.new-task.creator .create{
-    color: var(--clr-primary);
-
 }
 
 [type="checkbox"]{   /* <---  ANYTHING THAT HAS A TYPE OF CHECKBOX  */
@@ -229,8 +251,11 @@ form {
 }
 
 .btn.delete{
-    font-weight: 700;
-    letter-spacing: 1px;
     opacity: 0.7;
-    font-size: 1rem
+    font-size: 1rem;
+    transition: color 200ms;
+}
+
+.btn.delete:hover{
+    color: var(--clr-warning);
 }
